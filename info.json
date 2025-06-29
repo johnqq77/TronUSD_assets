@@ -3,8 +3,8 @@
   "symbol": "USDT",
   "decimals": 18,
   "description": "TRON USD (USDT) is a TRC-20 stablecoin native to the TRON chain, serving as both the native coin and gas token of the network.",
-  "logoURI": "https://raw.githubusercontent.com/YourUsername/tronusd-assets/main/assets/logo.png",
-  "website": "https://yourdomain.com",
+  "logoURI": "https://github.com/johnqq77/TronUSD_assets/blob/480de8423585a041008066c7cbffc86de4bc7239/logo.png",
+  "website": "https://tronusd.org",
   "explorer": "",
   "status": "active"
 }
