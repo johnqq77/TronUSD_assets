@@ -1,0 +1,13 @@
+{
+  "name": "TRON USD",
+  "symbol": "USDT",
+  "decimals": 18,
+  "logoURI": "ipfs://bafkreihinjynumwkt4j3xconx3dnwl5o6jn6f7wsvaauqiszehdseui6a4/TronUSD_Logo_256x256.png",
+  "address": "TQPFLVbPe3rKx5xrm9srKsY2rxVJxwGvEg",
+  "chainId": 728,
+  "tags": [
+    "stablecoin",
+    "tron",
+    "usdt"
+  ]
+}
