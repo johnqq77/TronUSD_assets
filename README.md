@@ -14,7 +14,7 @@
       background-color: #000;
       color: #fff;
       font-family: 'Inter', sans-serif;
-      overflow: hidden;
+      overflow-x: hidden;
     }
     canvas {
       position: fixed;
@@ -23,6 +23,7 @@
       width: 100%;
       height: 100%;
       z-index: -1;
+      opacity: 0.25;
     }
     header, section, footer {
       position: relative;
@@ -55,6 +56,15 @@
     a {
       color: #ff4444;
       text-decoration: none;
+    }
+    .watermark {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      width: 200px;
+      opacity: 0.03;
+      z-index: 0;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -100,6 +110,8 @@
     <p>&copy; 2025 Tron USD Network. Not affiliated with TRON Foundation or Tether.</p>
   </footer>
 
+  <img src="https://ipfs.io/ipfs/Qmf8bF5tw2igViXVQKTXwx1DjAyvy49hRfUWiVWeXu9K1R/logo.png" alt="TronUSD Watermark" class="watermark" />
+
   <script>
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
@@ -108,19 +120,21 @@
     canvas.width = window.innerWidth;
 
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
+    const fontSize = 18;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
 
     function draw() {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = '#ff4444';
-      ctx.font = fontSize + 'px monospace';
+      ctx.font = `${fontSize}px monospace`;
 
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+      for (let i = 0; i < columns; i++) {
+        const char = letters[Math.floor(Math.random() * letters.length)];
+        ctx.shadowColor = '#ff4444';
+        ctx.shadowBlur = 6;
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
 
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
@@ -130,9 +144,7 @@
       }
     }
 
-    setInterval(draw, 100);
+    setInterval(draw, 80);
   </script>
-  <img src="https://ipfs.io/ipfs/Qmf8bF5tw2igViXVQKTXwx1DjAyvy49hRfUWiVWeXu9K1R/logo.png" alt="TronUSD Logo" style="position: fixed; bottom: 2rem; right: 2rem; width: 160px; opacity: 0.04; z-index: 0; pointer-events: none;" />
 </body>
 </html>
-
